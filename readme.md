@@ -14,6 +14,8 @@ Example using docker-compose for https://github.com/nginx-proxy/nginx-proxy with
 
 ## Documentation:
 
+Don't forget to create network: `docker network create nginx-proxy`.
+
 In `conf/custom.conf` you can add any custom configuration for nginx.
 
 Example on how to use on containers:
@@ -55,6 +57,8 @@ You can use multiple domains/subdomains:
                 ...
                 - nginx-proxy
                 
-In `web/Dockerfile` you can include a conf where you define your servers`
+In `web/Dockerfile` you can include a conf where you define your servers`.
+
+When using in local environment the ssl certificates won't be created and a fallback to http will be created automatically.
 
 _Happy coding!_
