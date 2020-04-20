@@ -1,5 +1,4 @@
 version: '3'
-
 services:
   nginx-proxy:
     container_name: nginx-proxy
