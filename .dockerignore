@@ -1,8 +1,4 @@
 .gitignore
 licence
 readme.md
-certs/.gitignore
-conf/.gitignore
-dhparam/.gitignore
 html/.gitkeep
-vhost/.gitignore

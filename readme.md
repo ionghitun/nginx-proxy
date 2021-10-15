@@ -1,6 +1,7 @@
 # Nginx-proxy
 
-Example using docker-compose for https://github.com/nginx-proxy/nginx-proxy with https://github.com/nginx-proxy/docker-letsencrypt-nginx-proxy-companion.
+Example using docker-compose for https://github.com/nginx-proxy/nginx-proxy
+with https://github.com/nginx-proxy/docker-letsencrypt-nginx-proxy-companion.
 
 ## Instalation notes
 
@@ -35,7 +36,7 @@ Example on how to use on containers:
             networks:
                 ...
                 - nginx-proxy
-         
+
 You can use multiple domains/subdomains:
 
     services:
@@ -56,9 +57,11 @@ You can use multiple domains/subdomains:
             networks:
                 ...
                 - nginx-proxy
-                
-In `web/Dockerfile` you can include a conf where you define your servers, wildcards are not yet supported by letsencrypt companion.
 
-When using in local environment the ssl certificates won't be created and a fallback to http will be created automatically.
+In `web/Dockerfile` you can include a conf where you define your servers, wildcards are not yet supported by letsencrypt
+companion.
+
+When using in local environment the ssl certificates won't be created and a fallback to http will be created
+automatically.
 
 _Happy coding!_
