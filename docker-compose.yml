@@ -1,4 +1,4 @@
-version: '3'
+version: '3.9'
 services:
   nginx-proxy:
     container_name: nginx-proxy
@@ -32,5 +32,5 @@ services:
 
 networks:
   default:
-    external:
-      name: nginx-proxy
+    external: true
+    name: nginx-proxy
