@@ -1,23 +1,20 @@
 # Nginx-proxy
 
-Example using docker-compose for https://github.com/nginx-proxy/nginx-proxy
-with https://github.com/nginx-proxy/docker-letsencrypt-nginx-proxy-companion.
+Docker-compose for https://github.com/nginx-proxy/nginx-proxy with https://github.com/nginx-proxy/acme-companion.
 
-## Instalation notes
+## Introduction
 
-`$ git clone git@github.com:ionghitun/nginx-proxy.git`
+This is a wrapper for nginx proxy and acme companion so anyone can easily develop multiple projects locally with vhosts using docker, but also live ready.
 
-`$ docker-compose up -d`
+### Installation notes
 
-## Dependencies
+- Clone project
+- Create global nginx-proxy network: `docker network create nginx-proxy`
+- Build container using `docker-compose up -d`
 
-- docker
+### Documentation:
 
-## Documentation:
-
-Don't forget to create network: `docker network create nginx-proxy`.
-
-In `conf/custom.conf` you can add any custom configuration for nginx.
+- In `conf/custom.conf` you can add any custom configuration for nginx.
 
 Example on how to use on containers:
 
@@ -58,10 +55,7 @@ You can use multiple domains/subdomains:
                 ...
                 - nginx-proxy
 
-In `web/Dockerfile` you can include a conf where you define your servers, wildcards are not yet supported by letsencrypt
-companion.
-
-When using in local environment the ssl certificates won't be created and a fallback to http will be created
-automatically.
+- In `web/Dockerfile` you can include a conf where you define your servers, wildcards are not yet supported by acme companion.
+- When using in local environment the ssl certificates won't be created and a fallback to http will be created automatically.
 
 _Happy coding!_
