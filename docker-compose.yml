@@ -1,38 +1,38 @@
 version: '3.9'
 services:
-  nginx-proxy:
-    image: nginxproxy/nginx-proxy
-    container_name: nginx-proxy
-    restart: unless-stopped
-    environment:
-      ENABLE_IPV6: true
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./conf:/etc/nginx/conf.d
-      - ./vhost:/etc/nginx/vhost.d
-      - ./html:/usr/share/nginx/html
-      - ./dhparam:/etc/nginx/dhparam
-      - ./certs:/etc/nginx/certs:ro
-      - /var/run/docker.sock:/tmp/docker.sock:ro
+    nginx-proxy:
+        image: nginxproxy/nginx-proxy
+        container_name: nginx-proxy
+        restart: unless-stopped
+        environment:
+            ENABLE_IPV6: true
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+            - ./conf:/etc/nginx/conf.d
+            - ./vhost:/etc/nginx/vhost.d
+            - ./html:/usr/share/nginx/html
+            - ./dhparam:/etc/nginx/dhparam
+            - ./certs:/etc/nginx/certs:ro
+            - /var/run/docker.sock:/tmp/docker.sock:ro
 
-  nginx-proxy-acme:
-    image: nginxproxy/acme-companion
-    container_name: nginx-proxy-acme
-    restart: unless-stopped
-    links:
-      - nginx-proxy
-    volumes:
-      - ./vhost:/etc/nginx/vhost.d
-      - ./html:/usr/share/nginx/html
-      - ./dhparam:/etc/nginx/dhparam
-      - ./certs:/etc/nginx/certs:rw
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-    environment:
-      NGINX_PROXY_CONTAINER: nginx-proxy
+    nginx-proxy-acme:
+        image: nginxproxy/acme-companion
+        container_name: nginx-proxy-acme
+        restart: unless-stopped
+        links:
+            - nginx-proxy
+        volumes:
+            - ./vhost:/etc/nginx/vhost.d
+            - ./html:/usr/share/nginx/html
+            - ./dhparam:/etc/nginx/dhparam
+            - ./certs:/etc/nginx/certs:rw
+            - /var/run/docker.sock:/var/run/docker.sock:ro
+        environment:
+            NGINX_PROXY_CONTAINER: nginx-proxy
 
 networks:
-  default:
-    external: true
-    name: nginx-proxy
+    default:
+        external: true
+        name: nginx-proxy

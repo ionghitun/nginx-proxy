@@ -4,7 +4,8 @@ Docker-compose for https://github.com/nginx-proxy/nginx-proxy with https://githu
 
 ## Introduction
 
-This is a wrapper for nginx proxy and acme companion so anyone can easily develop multiple projects locally with vhosts using docker, but also live ready.
+This is a wrapper for nginx proxy and acme companion so anyone can easily develop multiple projects locally with vhosts
+using docker, but also live ready.
 
 ### Installation notes
 
@@ -55,7 +56,9 @@ You can use multiple domains/subdomains:
                 ...
                 - nginx-proxy
 
-- In `web/Dockerfile` you can include a conf where you define your servers, wildcards are not yet supported by acme companion.
-- When using in local environment the ssl certificates won't be created and a fallback to http will be created automatically.
+- In `web/Dockerfile` you can include a conf where you define your servers, wildcards are not yet supported by acme
+  companion.
+- When using in local environment the ssl certificates won't be created and a fallback to http will be created
+  automatically.
 
 _Happy coding!_
