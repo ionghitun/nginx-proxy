@@ -5,7 +5,7 @@ services:
         container_name: nginx-proxy
         restart: always
         environment:
-            ENABLE_IPV6: true
+            ENABLE_IPV6: 'true'
         ports:
             - "80:80"
             - "443:443"
