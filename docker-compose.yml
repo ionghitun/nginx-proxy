@@ -31,6 +31,9 @@ services:
             - /var/run/docker.sock:/var/run/docker.sock:ro
         environment:
             NGINX_PROXY_CONTAINER: nginx-proxy
+            FILES_UID: ${USER_ID}
+            FILES_GID: ${GROUP_ID}
+            FILES_PERMS: 644
 
 networks:
     default:
