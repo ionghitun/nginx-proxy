@@ -10,6 +10,8 @@ using docker, but also live ready.
 ### Installation notes
 
 - Clone project
+- copy `.env.example` to `.env` and use `id -u <user>` and `id -g <user>` to populate some of the fields.
+- change other env variables to your needs
 - Create global nginx-proxy network: `docker network create nginx-proxy`
 - Build container using `docker-compose up -d`
 
@@ -56,9 +58,15 @@ You can use multiple domains/subdomains:
                 ...
                 - nginx-proxy
 
+When using self-signed companion you need to add `SELF_SIGNED_HOST: "example.com"` environment variable as well
+
 - In `web/Dockerfile` you can include a conf where you define your servers, wildcards are not yet supported by acme
   companion.
-- When using in local environment the ssl certificates won't be created and a fallback to http will be created
-  automatically.
+- Self-signed companion should be used only on a local environment.
+- To use self-signed companion change `COMPOSE_PROFILES` to `self-signed` in .env
+
+## Trust self-signed certificates
+
+To avoid the alert "your connection is not private" please check self-signed repo: https://github.com/sebastienheyd/docker-self-signed-proxy-companion
 
 _Happy coding!_
