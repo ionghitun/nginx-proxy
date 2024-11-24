@@ -29,7 +29,7 @@ services:
             - ./certs:/etc/nginx/certs:rw
             - /var/run/docker.sock:/var/run/docker.sock:ro
         environment:
-            NGINX_PROXY_CONTAINER: nginx-proxy
+            NGINX_PROXY_CONTAINER: proxy-nginx-proxy
             FILES_UID: ${USER_ID}
             FILES_GID: ${GROUP_ID}
             FILES_PERMS: 644
@@ -45,6 +45,11 @@ services:
         volumes:
             - /var/run/docker.sock:/var/run/docker.sock:ro
             - ./certs:/etc/nginx/certs:rw
+        environment:
+            NGINX_PROXY_CONTAINER: proxy-nginx-proxy
+            FILES_UID: ${USER_ID}
+            FILES_GID: ${GROUP_ID}
+            FILES_PERMS: 644
         profiles:
             - self-signed
 
