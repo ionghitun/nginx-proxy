@@ -69,4 +69,9 @@ When using self-signed companion you need to add `SELF_SIGNED_HOST: "example.com
 
 To avoid the alert "your connection is not private" please check self-signed repo: https://github.com/sebastienheyd/docker-self-signed-proxy-companion
 
+## Use certificates with vite server
+
+In order to use certification in an application you need to change ownership to `<user>:<group>` for folder `certs` after certificates generation and map certs as read only volume
+where you want to use certs.
+
 _Happy coding!_

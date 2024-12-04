@@ -47,9 +47,6 @@ services:
             - ./certs:/etc/nginx/certs:rw
         environment:
             NGINX_PROXY_CONTAINER: proxy-nginx-proxy
-            FILES_UID: ${USER_ID}
-            FILES_GID: ${GROUP_ID}
-            FILES_PERMS: 644
         profiles:
             - self-signed
 
