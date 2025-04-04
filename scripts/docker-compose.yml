@@ -1,6 +1,6 @@
 services:
     proxy-nginx-proxy:
-        container_name: ${STACK_NAME}-nginx-proxy
+        container_name: nginx-proxy-nginx-proxy
         image: nginxproxy/nginx-proxy:${NGINX_PROXY_VERSION}
         restart: unless-stopped
         environment:
@@ -17,7 +17,7 @@ services:
             - /var/run/docker.sock:/tmp/docker.sock:ro
 
     proxy-acme-companion:
-        container_name: ${STACK_NAME}-acme-companion
+        container_name: nginx-proxy-acme-companion
         image: nginxproxy/acme-companion:${ACME_COMPANION_VERSION}
         restart: unless-stopped
         depends_on:
@@ -37,7 +37,7 @@ services:
             - acme
 
     proxy-self-signed-companion:
-        container_name: ${STACK_NAME}-self-signed-companion
+        container_name: nginx-proxy-self-signed-companion
         image: sebastienheyd/self-signed-proxy-companion:${SELF_SIGNED_VERSION}
         restart: unless-stopped
         depends_on:
@@ -53,4 +53,4 @@ services:
 networks:
     default:
         external: true
-        name: ${NETWORK_NAME}
+        name: nginx-proxy

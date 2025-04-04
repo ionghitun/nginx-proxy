@@ -12,12 +12,11 @@ using docker, but also live ready.
 - Clone project
 - copy `scripts/.env.example` to `scripts/.env` and use `id -u <user>` and `id -g <user>` to populate some of the fields.
 - change other env variables to your needs
-- Create global `NETWORK_NAME` network, ex: `docker network create nginx-proxy`
-- run `sh scripts/local/start.sh` to start the project
-- run `sh scripts/local/stop.sh` to stop the project
-- run `sh scripts/local/build.sh` to build or rebuild the project
-- run `sh scripts/local/restart.sh` to restarts container
-- run `sh scripts/local/console.sh` to exec the nginx proxy container
+- Create global `nginx-proxy` network: `docker network create nginx-proxy`
+- run `sh scripts/start.sh` to start the project
+- run `sh scripts/stop.sh` to stop the project
+- run `sh scripts/build.sh` to build or rebuild the project
+- run `sh scripts/restart.sh` to restart containers
 
 ### Documentation:
 

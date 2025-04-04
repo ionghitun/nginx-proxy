@@ -19,10 +19,8 @@ if [ "$UPDATE_IMAGES" = "y" ] || [ "$UPDATE_IMAGES" = "Y" ]; then
     docker pull "sebastienheyd/self-signed-proxy-companion:$SELF_SIGNED_VERSION"
 fi
 
-STACK_NAME=$(grep -oP '^STACK_NAME=\K.*' .env)
-
 echo "*** Rebuilding application ***"
-docker compose -p "$STACK_NAME" build --no-cache
-docker compose -p "$STACK_NAME" up -d
+docker compose -p nginx-proxy build --no-cache
+docker compose -p nginx-proxy up -d
 
 echo "*** Rebuild ended ***"
