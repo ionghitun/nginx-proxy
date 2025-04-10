@@ -3,7 +3,7 @@
 echo "[startup] Fixing existing .local certs..."
 find /etc/nginx/certs -type f \( -name "*.local.crt" -o -name "*.local.key" \) -exec chmod 644 {} \;
 
-# Start watcher in background
+echo "[startup] Starting inotify watcher..."
 inotifywait -m -e create -e modify /etc/nginx/certs |
 while read dir action file; do
   case "$file" in
@@ -14,5 +14,5 @@ while read dir action file; do
   esac
 done &
 
-# 🔁 Now exec the original entrypoint (inherits CMD from image)
-exec "$@"
+echo "[startup] Keeping container running with tail -f /dev/null"
+tail -f /dev/null

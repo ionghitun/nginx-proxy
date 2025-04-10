@@ -53,6 +53,7 @@ services:
             NGINX_PROXY_CONTAINER: proxy-nginx-proxy
         profiles:
             - self-signed
+        command: /app/entrypoint.sh
 
 networks:
     default:
