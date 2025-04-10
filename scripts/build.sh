@@ -17,6 +17,7 @@ if [ "$UPDATE_IMAGES" = "y" ] || [ "$UPDATE_IMAGES" = "Y" ]; then
     docker pull "nginxproxy/nginx-proxy:$NGINX_PROXY_VERSION"
     docker pull "nginxproxy/acme-companion:$ACME_COMPANION_VERSION"
     docker pull "sebastienheyd/self-signed-proxy-companion:$SELF_SIGNED_VERSION"
+    docker pull alpine:latest
 fi
 
 echo "*** Rebuilding application ***"

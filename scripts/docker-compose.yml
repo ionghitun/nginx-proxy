@@ -58,6 +58,9 @@ services:
         restart: unless-stopped
         volumes:
             - ../certs:/etc/nginx/certs:rw
+        environment:
+            - USER_ID=${USER_ID}
+            - GROUP_ID=${GROUP_ID}
         profiles:
             - self-signed
 
