@@ -38,7 +38,11 @@ services:
 
     proxy-self-signed-companion:
         container_name: nginx-proxy-self-signed-companion
-        image: sebastienheyd/self-signed-proxy-companion:${SELF_SIGNED_VERSION}
+        build:
+            context: ./
+            dockerfile: self-signed/Dockerfile
+            args:
+                SELF_SIGNED_VERSION: ${SELF_SIGNED_VERSION}
         restart: unless-stopped
         depends_on:
             - proxy-nginx-proxy
