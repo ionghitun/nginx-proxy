@@ -38,11 +38,7 @@ services:
 
     proxy-self-signed-companion:
         container_name: nginx-proxy-self-signed-companion
-        build:
-            context: ./
-            dockerfile: self-signed/Dockerfile
-            args:
-                SELF_SIGNED_VERSION: ${SELF_SIGNED_VERSION}
+        image: sebastienheyd/self-signed-proxy-companion:${SELF_SIGNED_VERSION}
         restart: unless-stopped
         depends_on:
             - proxy-nginx-proxy
@@ -53,7 +49,17 @@ services:
             NGINX_PROXY_CONTAINER: proxy-nginx-proxy
         profiles:
             - self-signed
-        command: /app/entrypoint.sh
+
+    proxy-self-signed-perms:
+        container_name: nginx-proxy-self-signed-perms
+        build:
+            context: ./
+            dockerfile: self-signed-perms/Dockerfile
+        restart: unless-stopped
+        volumes:
+            - ../certs:/etc/nginx/certs:rw
+        profiles:
+            - self-signed
 
 networks:
     default:
