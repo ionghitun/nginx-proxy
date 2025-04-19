@@ -1,10 +1,10 @@
 #!/bin/sh
 echo
-echo "===== Restarting... ====="
+echo "===== Stopping... ====="
 echo
 
 cd scripts || exit
-docker compose restart
+docker compose down
 
 echo
 echo "===== Done! ====="
