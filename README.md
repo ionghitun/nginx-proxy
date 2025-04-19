@@ -34,7 +34,7 @@ projects locally with virtual hosts using Docker and is also ready for live depl
 
 ## Configuration
 
-- **Conf Configuration**: Edit `conf/custom.conf`
+**Conf Configuration**: Edit `conf/custom.conf`
 
 ### Compose Profiles
 
