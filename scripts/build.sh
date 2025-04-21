@@ -1,7 +1,8 @@
 #!/bin/sh
 cd scripts || exit
 
-echo "Want to update images before rebuilding? (y/n) [default: y]: "
+echo
+echo "Do you want to update images before rebuilding? (y/n) [default: y]: "
 read UPDATE_IMAGES
 UPDATE_IMAGES=${UPDATE_IMAGES:-y}
 
@@ -9,7 +10,7 @@ COMPOSE_PROFILES=$(grep -oP '^COMPOSE_PROFILES=\K.*' .env)
 
 if [ "$UPDATE_IMAGES" = "y" ] || [ "$UPDATE_IMAGES" = "Y" ]; then
     echo
-    echo "===== Updating image... ====="
+    echo "===== Updating images... ====="
     echo
 
     NGINX_PROXY_VERSION=$(grep -oP '^NGINX_PROXY_VERSION=\K.*' .env)
