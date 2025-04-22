@@ -2,7 +2,7 @@
 cd scripts || exit
 
 echo
-echo "Do you want to update images before rebuilding? (y/n) [default: y]: "
+printf "Do you want to update images before rebuilding? (y/n) [default: y]: "
 read UPDATE_IMAGES
 UPDATE_IMAGES=${UPDATE_IMAGES:-y}
 
