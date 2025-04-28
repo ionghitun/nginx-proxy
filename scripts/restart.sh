@@ -4,7 +4,11 @@ echo "===== Restarting... ====="
 echo
 
 cd scripts || exit
-docker compose restart
+if command -v docker-compose >/dev/null 2>&1; then
+    docker-compose restart
+else
+    docker compose restart
+fi
 
 echo
 echo "===== Done! ====="

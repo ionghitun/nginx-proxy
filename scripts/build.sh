@@ -6,16 +6,16 @@ printf "Do you want to update images before rebuilding? (y/n) [default: y]: "
 read UPDATE_IMAGES
 UPDATE_IMAGES=${UPDATE_IMAGES:-y}
 
-COMPOSE_PROFILES=$(grep -oP '^COMPOSE_PROFILES=\K.*' .env)
+COMPOSE_PROFILES=$(sed -n 's/^COMPOSE_PROFILES=//p' .env)
 
 if [ "$UPDATE_IMAGES" = "y" ] || [ "$UPDATE_IMAGES" = "Y" ]; then
     echo
     echo "===== Updating images... ====="
     echo
 
-    NGINX_PROXY_VERSION=$(grep -oP '^NGINX_PROXY_VERSION=\K.*' .env)
-    ACME_COMPANION_VERSION=$(grep -oP '^ACME_COMPANION_VERSION=\K.*' .env)
-    SELF_SIGNED_VERSION=$(grep -oP '^SELF_SIGNED_VERSION=\K.*' .env)
+    NGINX_PROXY_VERSION=$(sed -n 's/^NGINX_PROXY_VERSION=//p' .env)
+    ACME_COMPANION_VERSION=$(sed -n 's/^ACME_COMPANION_VERSION=//p' .env)
+    SELF_SIGNED_VERSION=$(sed -n 's/^SELF_SIGNED_VERSION=//p' .env)
 
     docker pull "nginxproxy/nginx-proxy:$NGINX_PROXY_VERSION"
 
@@ -31,8 +31,13 @@ echo
 echo "===== Building and starting containers... ====="
 echo
 
-docker compose build --no-cache
-docker compose up -d
+if command -v docker-compose >/dev/null 2>&1; then
+    docker-compose build --no-cache
+    docker-compose up -d
+else
+    docker compose build --no-cache
+    docker compose up -d
+fi
 
 echo
 echo "===== Done! ====="
