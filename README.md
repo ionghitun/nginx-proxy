@@ -90,6 +90,7 @@ environment.
 ### Using Certificates with Vite Server
 
 To use SSL certificates in applications like Vite, mount the certs directory as a read-only volume in your application container:
+To have permissions to use, hosts must end in `.local`
 
 ```yaml
 volumes:
