@@ -74,11 +74,13 @@ LETSENCRYPT_HOST: example.com,sub.example.com,example2.com
 LETSENCRYPT_EMAIL: mail@example.com
 ```
 
-When using the self-signed companion, add extra the `SELF_SIGNED_HOST` environment variable:
+When using the self-signed companion, add extra the `SELF_SIGNED_HOST` environment variable, the `labels` is also important, otherwise will not work:
 
 ```yaml
 environment:
     SELF_SIGNED_HOST: example.com
+labels:
+    - com.github.nginx-proxy.nginx-proxy.ssl_verify_client=off
 ```
 
 ### Trusting Self-Signed Certificates
